@@ -1,0 +1,44 @@
+.profile_nav_links{
+    text-align: right;
+    padding-right: 5px;
+}
+.profile_nav_links a{
+    text-decoration: none;
+}
+.friends_block{
+    text-align: center;
+}
+.friendCard{
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.58);
+    width: 250px;
+    height: 80px;
+    border-radius: 10px;
+    text-align: left;
+}
+.friendCard span{
+    color: white;
+    font-size: 50px;
+    margin-left: 10px;
+}
+.friendCard div{
+    color: black;
+    font-family: Arial;
+    background: white;
+    font-size: 22px;
+    height: 30px;
+    margin-top: -12px;
+    text-align: right;
+    padding-right: 5px;
+}
+.friendCard small{
+    color: white;
+    float: right;
+    font-size: 15px;
+    padding: 3px;
+    margin: 3px;
+    cursor: pointer;
+}
+.friendCard small:hover{
+    font-size: 17px;
+}

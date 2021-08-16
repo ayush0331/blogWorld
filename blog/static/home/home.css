@@ -1,0 +1,49 @@
+/*----new post style----------*/
+input:focus{
+    outline: none;
+}
+.new_post{
+    width: calc(95% - 10px);
+    margin: 8px auto;
+    padding: 10px;
+
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.new_post textarea {
+    width: 95%;
+    max-width: 95%;
+    min-width: 95%;
+    border: none;
+    border-bottom: 2px solid darkgrey;
+    display: block;
+    margin: 5px auto;
+    padding: 5px;
+}
+textarea:focus{
+    outline: none;
+    min-height: 150px;
+}
+.newPostBtnBar{
+    width: 90%;
+    margin: 10px auto;
+
+
+}
+.newPostBtnBar{
+    text-align: right;
+}
+.newPostBtnBar button, label{
+    display: inline-block;
+    width: fit-content;
+    border: none;
+    background: none;
+    padding: 8px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(6, 40, 80, 0.58) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;;
+}
+.newPostBtnBar button:hover, label:hover{
+    background: #1b9b1b;
+}

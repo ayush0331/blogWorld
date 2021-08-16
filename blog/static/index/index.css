@@ -1,0 +1,145 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(#0009,#0009),
+                            url("../images/index_writing background.png");
+    background-repeat: no-repeat repeat;
+    background-position: top;
+    background-size: 2000px ;
+}
+
+nav{
+    background-color: rgba(0, 0, 0, 0.88);
+    margin: 0;
+    padding: 15px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.frm_blk{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    width: 400px;
+    min-height: 300px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+}
+form{
+    width: 90%;
+    display: block;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+
+}
+form>h1{
+    color: white;
+}
+form>label, form>input,form>input:focus{
+    display: block;
+    text-align: left;
+    font-size: 17px;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    border: none;
+}
+form>label{
+    font-family: Arial;
+    border-top-left-radius: 10px;
+    font-weight: bold;
+    color: white;
+}
+form>input{
+    margin-bottom: 5px;
+    border-radius: 10px;
+    border-bottom: 3px solid white;
+    background: transparent;
+    color: white;
+}
+form>input:invalid{
+    border-bottom: 5px solid red;
+}
+form>input:valid{
+    border-bottom: 5px solid #02ec9a;
+}
+form>input:placeholder-shown{
+    border-bottom: 5px solid white;
+}
+input::placeholder{
+    color: rgba(255, 255, 255, 0.58);
+}
+input:-webkit-autofill {
+    -webkit-background-clip: text;
+    color: white;
+}
+
+form>button{
+    padding: 10px;
+    width: 100px;
+    border-radius: 20px;
+    border: 2px solid white;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: white;
+}
+form>button:hover{
+    background: black;
+    color: white;
+}
+form>a{
+    display: block;
+    padding-top: 10px;
+    color: #e5e3e3;
+    font-weight: bold;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    margin-top: 10px;
+    padding: 5px 0;
+    text-decoration: none;
+
+}
+.user_icon{
+    text-align: center;
+    width: 100%;
+    height: 90px;
+    font-size: 80px;
+    color: rgba(255, 255, 255, 0.63);
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    overflow: visible;
+}
+
+.message,err{
+    margin: 10px auto;
+    background: red;
+    padding: 5px 8px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    max-width: 95%;
+    text-align: center;
+}
+.message success{
+    background: green;
+}
+input:focus, button:focus{
+    outline: none;
+}
+@media only screen and (max-width: 400px) {
+    .frm_blk {
+        width: 95%;
+    }
+}
+
+

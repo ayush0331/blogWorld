@@ -1,0 +1,36 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'friends/friends.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block contentsection %}
+    <div class="profile_head">
+        <div><i class="fas fa-user"></i></div>
+        <span>{{ user.name }}</span>
+    </div>
+
+    <div class="profile_nav_links">
+        <a href="/findFriends">Find Friends</a>
+        | <a href="/friendRequests">Friend Requests</a>
+    </div>
+    <h3>Friends</h3>
+
+    <div class="friends_block">
+        {% for friend in friendList %}
+            <div class="friendCard">
+                <span><i class="fas fa-user"></i></span>
+                <div>
+                    {{ friend.name }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock contentsection %}
+{% block extrajs %}
+    <script src="{% static 'friends/friends.js' %}"></script>
+{% endblock extrajs %}

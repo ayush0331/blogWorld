@@ -1,0 +1,56 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'friends/friends.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block contentsection %}
+    <div class="profile_head">
+        <div><i class="fas fa-user"></i></div>
+        <span>{{ user.name }}</span>
+    </div>
+    <div class="profile_nav_links">
+        <a href="/myFriends">My Friends</a>
+        | <a href="/findFriends">Find Friends</a>
+    </div>
+    <h3>Friend Requests -</h3>
+    <div class="friends_block">
+
+    {% for request in requests.received %}
+
+        <div class="friendCard">
+            <span><i class="fas fa-user"></i></span>
+            <small onclick="sendFrndUpdtRq(this,'reject','{{ request.id }}')"><i class="far fa-times-circle"></i></small>
+            <small onclick="sendFrndUpdtRq(this,'approve','{{ request.id }}')"><i class="far fa-check-circle"></i></small>
+            <div>
+                {{ request.name }}
+            </div>
+        </div>
+    {% empty %}
+        <h5>No pending request</h5>
+    {% endfor %}
+    </div>
+    <h3>Sent Requests -</h3>
+    <div class="friends_block">
+    {% for request in requests.sent %}
+
+        <div class="friendCard">
+            <span><i class="fas fa-user"></i></span>
+            <small onclick="sendFrndUpdtRq(this,'cancel','{{ request.id }}')"><i class="far fa-times-circle"></i></small>
+
+            <div>
+                {{ request.name }}
+            </div>
+
+    </div>
+    {% empty %}
+        <h5>No pending sent request</h5>
+    {% endfor %}
+    </div>
+
+
+{% endblock contentsection %}
+{% block extrajs %}
+    <script src="{% static 'friends/friends.js' %}"></script>
+{% endblock extrajs %}

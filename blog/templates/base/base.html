@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog World</title>
+    <link href="{% static 'base/base.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesome/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesome/js/all.min.js' %}"></script>
+    <script src="{% static 'jquery/jquery-3.6.0.min.js' %}"></script>
+    {% block css %}
+
+    {% endblock css %}
+</head>
+<body>
+    <nav class="top-nav">
+        <span class="web_title">
+            Blog World
+        </span>
+        <div>
+            <span onclick="window.location.href='/'"><i class="fas fa-house-user"></i></span><!-- HOME-->
+            <span onclick="window.location.href='/myProfile'"><i class="fas fa-user"></i></span><!-- PROFILE-->
+            <span onclick="window.location.href='/myFriends'"><i class="fas fa-users"></i></span><!-- friends -->
+            <span onclick="window.location.href='/logout'"><i class="fas fa-power-off"></i></span><!-- LOGOUT-->
+        </div>
+    </nav>
+    <div class="content_section">
+        {% block contentsection %}
+            
+        {% endblock contentsection %}
+    </div>
+
+
+    {% block extrajs %}
+
+    {% endblock extrajs %}
+    <script src="{% static 'base/base.js' %}"></script>
+</body>
+</html>
+
+
+{#-- copy below lines to extend the base-------------------------------#}
+{#{% extends "base/base.html" %}#}
+{#{% load static %}#}
+{##}
+{#{% block css %}#}
+{#    <link href="{% static 'home/home.css' %}" rel="stylesheet" type="text/css">#}
+{#{% endblock %}#}
+{#{% block extrajs %}#}
+{#    <script src="{% static 'home/home.css' %}"></script>#}
+{#{% endblock extrajs %}#}
+{#{% block contentsection %}#}
+{#    home page#}
+{#{% endblock contentsection %}#}

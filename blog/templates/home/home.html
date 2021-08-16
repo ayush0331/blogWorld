@@ -1,0 +1,154 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'home/home.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block contentsection %}
+    <div class="new_post">
+        <form name="newPostForm" method="post" action="/newPost/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="np_title_bar">
+                <span><i class="far fa-user-circle"></i></span>
+                <span>{{ user.name }}</span>
+                <span style="color: #02ec9a;float: right">
+                    <i class="fas fa-feather"></i>
+                </span>
+            </div>
+            <textarea name="postText" placeholder="Start writing a new blog......." required></textarea>
+            <div class="newPostBtnBar">
+                <span>
+                    <label for="newPostFile">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                            Upload Image
+                        <small id="newPostFileName"></small>
+                    </label>
+                    <input id="newPostFile" type="file" accept="image/jpeg" style="display: none" name="imagefile">
+                </span>
+                <button type="submit">Post</button>
+            </div>
+        </form>
+    </div>
+
+    {% for blog in blogs %}
+        <div class="post">
+        <div class="post_head">
+            <i class="far fa-user-circle"></i>
+            <span>{{ blog.user_name }}</span><br>
+            <small>{{ blog.created_at }}</small>
+            {% if blog.auth %}
+                <button><i class="fas fa-trash-alt"></i></button>
+            {% endif %}
+        </div>
+
+        {% if blog.picture %}
+            <div class="post_img">
+                <img src="{{ blog.picture }}">
+            </div>
+        {% endif %}
+        <div class="post_text">{{ blog.text }}</div>
+        <div class="post_menu">
+            <span class="like {% if blog.is_liked %}active{% endif %}">
+                <i class="fas fa-thumbs-up"></i>
+                <small>{{ blog.likes }}</small>
+            </span><!--like-->
+            <span class="love {% if blog.is_loved %}active{% endif %}">
+                <i class="fas fa-heart"></i>
+                <small>{{ blog.loves }}</small>
+            </span><!--love-->
+            <span class="dislike {% if blog.is_disliked %}active{% endif %}">
+                <i class="fas fa-thumbs-down"></i>
+                <small>{{ blog.dislikes }}</small>
+            </span><!--dislike-->
+            <span class="save {% if blog.is_saved %}active{% endif %}">
+                <i class="fas fa-bookmark"></i>
+                <small>{{ blog.saves }}</small>
+            </span><!--dislike-->
+
+        </div>
+        <div class="post_comments">
+            <ul class="post_comment_list">
+                {% for comment in blog.comments %}
+                    <li>
+                        <div>
+                            <span class="comment_by">{{ comment.user_name }}</span>:
+                            <span class="comment">{{ comment.comment }}</span>
+                        </div>
+                        <div class="comment_reactions">
+                            <span class="like {% if comment.is_liked %} active {% endif %}">
+                                <i class="fas fa-thumbs-up"></i>
+                                <small>{{ comment.likes }}</small>
+                            </span><!--like-->
+                            <span class="love {% if comment.is_loved %} active {% endif %}">
+                                <i class="fas fa-heart"></i>
+                                <small>{{ comment.loves }}</small>
+                            </span><!--love-->
+                            <span class="dislike {% if comment.is_disliked %} active {% endif %}">
+                                <i class="fas fa-thumbs-down"></i>
+                                <small>{{ comment.dislikes }}</small>
+                            </span><!--dislike-->
+                            {% if comment.auth %}
+                                <span class="delete_btn">
+                                        <i class="fas fa-trash-alt"></i>
+                                </span><!--delete-->
+                            {% endif %}
+                        </div>
+                        <div>
+                            <ul class="post_reply_list">
+                                {% for reply in comment.replies %}
+                                    <li>
+                                        <div>
+                                            <span class="reply_by">{{ reply.user_name }}</span>:
+                                            <span class="reply">this is reply</span>
+                                        </div>
+                                        <div class="reply_reactions">
+                                            <span class="like {% if reply.is_liked %} active {% endif %}">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <small>{{ reply.likes }}</small>
+                                            </span><!--like-->
+                                            <span class="love {% if reply.is_loved %} active {% endif %}">
+                                                <i class="fas fa-heart"></i>
+                                                <small>{{ reply.loves }}</small>
+                                            </span><!--love-->
+                                            <span class="dislike {% if reply.is_disliked %} active {% endif %}">
+                                                <i class="fas fa-thumbs-down"></i>
+                                                <small>{{ reply.dislikes }}</small>
+                                            </span><!--dislike-->
+                                            {% if reply.auth %}
+                                                <span class="delete_btn">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </span><!--delete-->
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+                            <ul>
+                                <div class="post_new_reply">
+                                    <input type="text" maxlength="200" name="500" placeholder="Reply:">
+                                    <button><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="post_new_comment">
+                <input type="text" maxlength="200" name="500" placeholder="Comment:">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+
+    </div>
+    {% empty %}
+        <h3 style="text-align: center">no blogs available</h3>
+    {% endfor %}
+
+
+
+{% endblock contentsection %}
+{% block extrajs %}
+    <script src="{% static 'home/home.js' %}"></script>
+{% endblock extrajs %}

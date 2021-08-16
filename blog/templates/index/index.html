@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog World</title>
+    <link href="{% static 'index/index.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesome/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+        <nav>
+{#            <i class="fas fa-th-large"></i>#}
+            BlogWorld
+        </nav>
+        {% if message %}
+            <div class="message {{ type }}">
+                        {{ message }}
+            </div>
+        {% endif %}
+        <div class="frm_blk">
+            <div class="user_icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <form name="loginForm" action="/login/" method="post">
+                {% csrf_token %}
+
+                <h1>Login</h1>
+                <label>
+                    Email
+                </label>
+                <input type="text" name="email" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" required placeholder="Your Email Address">
+
+                <label>Password</label>
+                <input name="password" type="password" required pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$" placeholder="Password (ex. abc@123)" >
+
+                <button type="submit">Login</button>
+
+                <a href="#" onclick="switchform(2)">Don't have a account? Create new account</a>
+
+            </form>
+
+{#            ----------------------------------------------------------------------------------------------------------#}
+
+            <form name="reg_form" style="display: none"  action="/register/" method="post">
+                {% csrf_token %}
+                <h1>Register</h1>
+
+                <label>
+                    Full Name
+                </label>
+                <input type="text" name="name" pattern="^[a-zA-Z0-9 ]+$" required placeholder="Full Name" maxlength="30" minlength="3">
+
+                <label>Mobile</label>
+                <input type="tel" name="mobile" pattern="^[6-9]{1}[0-9]{9}$" required placeholder="Mobile" maxlength="10">
+
+                <label>Email</label>
+                <input type="text" name="email" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" required placeholder="Your Email Address">
+
+                <label>Password</label>
+                <input name="password" type="password" required pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$" placeholder="Password (ex. abc@123)" >
+                <label>Re-enter Password</label>
+                <input name="vf_password" type="password"  placeholder="Re-enter Password" required onchange="validate_pw()" onkeyup="validate_pw()">
+
+                <button type="submit">Register</button>
+
+                <a href="#" onclick="switchform()" >Already have an account? Log in</a>
+
+            </form>
+        </div>
+
+
+
+
+
+        <script src="{% static 'index/index.js' %}"></script>
+        <script src="{% static 'fontawesome/js/all.min.js' %}"></script>
+</body>
+</html>

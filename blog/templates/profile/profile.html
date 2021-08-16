@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'profile/profile.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block contentsection %}
+    <div class="profile_head">
+        <div><i class="fas fa-user"></i></div>
+        <span>{{ user.name }}</span>
+    </div>
+
+
+
+
+{% endblock contentsection %}
+{% block extrajs %}
+    <script src="{% static 'profile/profile.js' %}"></script>
+{% endblock extrajs %}
